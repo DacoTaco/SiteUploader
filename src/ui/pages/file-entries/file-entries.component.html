@@ -1,0 +1,18 @@
+@if(!isUserGuest())
+{
+<font size="+1">click <a routerLink='/upload' target=_self>me</a> to upload a file</font><br><br>
+}
+
+@if(isUserAdmin())
+{
+<font size="+1">click <a routerLink='/manager' target=_self>me</a> to manage the users</font><br><br>
+}
+
+<font size="+1">click <a routerLink='/logout' target=_self>me</a> to logout</font><br><br>
+
+<font face="Verdana, Arial, Helvetica, sans-serif">
+<div *ngFor='let file of files' style="padding:1px 0px 2px 0px;color: blue;">
+    <a href='{{file.path}}' target=_blank>{{file.filename}}</a>
+    <br>
+</div>
+</font>

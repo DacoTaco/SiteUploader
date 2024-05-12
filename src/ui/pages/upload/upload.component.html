@@ -1,0 +1,38 @@
+<div class="container" appDnd (fileDropped)="onFileDropped($event)">
+	<input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target)" />
+	<img src="ui/assets/img/dnd/ic-upload-file.svg" alt="">
+	<h3>Drag and drop file here</h3>
+	<h3>or</h3>
+	<label for="fileDropRef">Browse for file</label>
+  </div>
+  <div class="files-list">
+	<div class="single-file" *ngFor="let fileProgress of files; let i = index">
+	  <img src="ui/assets/img/dnd/ic-file.svg" width="45px" alt="file">
+	  <div class="info">
+		<h4 class="name">
+		  {{ fileProgress?.file?.name }}
+		</h4>
+		<p class="size">
+		  {{ formatBytes(fileProgress?.file?.size ?? 0) }}
+		</p>
+		<app-progress [progress]="fileProgress?.progress ?? 0"></app-progress>
+	  </div>
+	  <img src="ui/assets/img/dnd/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+	</div>
+  </div>
+  
+<div>
+    <br><br><br>
+    <span>experimental shit y0</span>
+    <form action="./GetURL.php">
+        <span>URL :</span>
+        <input type="text" name="url1" size="50">
+        <span>alternate file name : </span>
+        <input type="text" name="filename" size="50">
+        <br>
+        <input type="submit" name="download" value="Get Url!">
+    </form>
+    <br><br>
+    <a routerLink='/logout' target=_self>Logout</a><BR><BR>
+    <a routerLink="/" target=_self>CLICKY FOR listing!</a>
+</div>
