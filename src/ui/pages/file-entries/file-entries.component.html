@@ -11,6 +11,8 @@
 <font size="+1">click <a routerLink='/logout' target=_self>me</a> to logout</font><br><br>
 
 <font face="Verdana, Arial, Helvetica, sans-serif">
+
+<app-loadingIndicator [isLoading]="isLoading" />
 <div *ngFor='let file of files' style="padding:1px 0px 2px 0px;color: blue;">
     <a href='{{file.path}}' target=_blank>{{file.filename}}</a>
     <br>
