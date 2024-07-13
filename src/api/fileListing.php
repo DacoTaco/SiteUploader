@@ -7,12 +7,6 @@ class FileEntry {
     public string $filename;
     public string $path;
 }
-
-// Custom comparison function
-function compareFileEntries($a, $b) {
-    return $a->filename <=> $b->filename;
-}
-
 function IsAcceptedFile(string $filename):bool
 {
     if(!isset($filename))
@@ -60,7 +54,9 @@ function GetFileEntries()
     }
 
     //sort the array using our function above
-    usort($arr, 'compareFileEntries');
+    usort($arr, function ($a, $b) {
+		return strcasecmp($a->filename, $b->filename);
+	});
     return $arr;
 }
 
